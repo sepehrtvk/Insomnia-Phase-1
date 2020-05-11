@@ -105,4 +105,28 @@ public class RightSidePanel extends JPanel {
         headerInRightSide.add(copyToClipboardBtn);
 
     }
+    public JPanel getMessageBody() {
+        return messageBody;
+    }
+
+    public JPanel getHeaderInRightSide() {
+        return headerInRightSide;
+    }
+
+    public JTabbedPane getRightSideTabbedPane() {
+        return rightSideTabbedPane;
+    }
+
+    public JPanel getStatusPanel() {
+        return statusPanel;
+    }
+
+    public JTextField getValueRightSideText() {
+        return valueRightSideText;
+    }
+
+    public JTextField getNameRightSideText() {
+        return nameRightSideText;
+    }
+
 }
