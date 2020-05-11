@@ -1,6 +1,8 @@
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class RightSidePanel extends JPanel {
@@ -66,6 +68,35 @@ public class RightSidePanel extends JPanel {
         rightSideTabbedPane.setOpaque(true);
         add(rightSideTabbedPane, BorderLayout.CENTER);
 
+        messageBody = new JPanel();
+        messageBody.setBackground(Color.DARK_GRAY);
+        messageBody.setLayout(new BorderLayout(0, 0));
+        rightSideTabbedPane.addTab("      Message body      ", null, messageBody, null);
+
+        headerRightComboBox = new JComboBox(new String[]{"Raw", "Preview", "JSON"});
+        rightSideTabbedPane.setBackgroundAt(0, Color.GRAY);
+        messageBody.add(headerRightComboBox, BorderLayout.NORTH);
+
+        headerInRightSide = new JPanel();
+        headerInRightSide.setBackground(Color.DARK_GRAY);
+        headerInRightSide.setLayout(new FlowLayout());
+        rightSideTabbedPane.addTab("            Header            ", headerInRightSide);
+
+        valueRightSideText = new JTextField();
+        valueRightSideText.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED), "Value", TitledBorder.CENTER, TitledBorder.ABOVE_TOP));
+        valueRightSideText.setEditable(false);
+        valueRightSideText.setBackground(Color.LIGHT_GRAY);
+        valueRightSideText.setBounds(171, 28, 134, 40);
+        valueRightSideText.setColumns(13);
+        headerInRightSide.add(valueRightSideText);
+
+        nameRightSideText = new JTextField();
+        nameRightSideText.setEditable(false);
+        nameRightSideText.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED), "Name", TitledBorder.CENTER, TitledBorder.ABOVE_TOP));
+        nameRightSideText.setBackground(Color.LIGHT_GRAY);
+        nameRightSideText.setBounds(16, 28, 160, 50);
+        nameRightSideText.setColumns(13);
+        headerInRightSide.add(nameRightSideText);
 
     }
 }
