@@ -62,4 +62,18 @@ public class LeftSidePanel extends JPanel {
         add(newRequestBtn);
 
     }
+
+    public JTextField getFilterTextField() {
+        return filterTextField;
+    }
+
+    public JTree getRequestsTree() {
+        return requestsTree;
+    }
+
+    public JButton getNewRequestBtn() {
+        return newRequestBtn;
+    }
+
+
 }
