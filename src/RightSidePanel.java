@@ -48,5 +48,13 @@ public class RightSidePanel extends JPanel {
         dataNumberStatus.setBorder(new MatteBorder(5, 5, 5, 5, Color.ORANGE));
         statusPanel.add(dataNumberStatus);
 
+        dataSizeStatus = new JLabel("13.1 KB");
+        dataSizeStatus.setBounds(150, 10, 59, 31);
+        dataSizeStatus.setOpaque(true);
+        dataSizeStatus.setForeground(Color.DARK_GRAY);
+        dataSizeStatus.setBorder(new MatteBorder(3, 3, 3, 3, Color.LIGHT_GRAY));
+        dataSizeStatus.setBackground(Color.LIGHT_GRAY);
+        statusPanel.add(dataSizeStatus);
+
     }
 }
