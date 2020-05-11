@@ -57,6 +57,7 @@ public class InsomniaMenuBar extends JMenuBar {
                 JOptionPane.showMessageDialog(null, "Developer : \n  Name : Sepehr Tavakoli\n  Email : Sepehrtvk@aut.ac.ir   \n  Student Number : 9831111","About",JOptionPane.INFORMATION_MESSAGE,icon);
             }
         });
+
         help = new JMenuItem("Help", KeyEvent.VK_H);
         menuHelp.setMnemonic(KeyEvent.VK_H);
         KeyStroke helpKey = KeyStroke.getKeyStroke("control H");

@@ -61,21 +61,14 @@ public class CenterSidePanel extends JPanel {
                 }
             }
         });
+
         bodyPanel.add(bodyTypeComboBox, BorderLayout.NORTH);
 
-        authPanel = new JPanel();
-        authPanel.setBackground(Color.DARK_GRAY);
-        tabbedPane.addTab("      Auth      ", authPanel);
-
+        initAuthTab();
         initQueryTab();
         initHeaderTab();
         initUrlPanel();
-
-        docsPanel = new JPanel();
-        docsPanel.setBackground(Color.DARK_GRAY);
-        tabbedPane.addTab("      Docs      ", docsPanel);
-
-
+        initDocsTab();
     }
 
     public void initQueryTab() {
@@ -307,6 +300,20 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 0;
 
         urlPanel.add(saveBtn, gbc);
+
+    }
+
+    public void initAuthTab() {
+        authPanel = new JPanel();
+        authPanel.setBackground(Color.DARK_GRAY);
+        tabbedPane.addTab("      Auth      ", authPanel);
+
+    }
+
+    public void initDocsTab() {
+        docsPanel = new JPanel();
+        docsPanel.setBackground(Color.DARK_GRAY);
+        tabbedPane.addTab("      Docs      ", docsPanel);
 
     }
 

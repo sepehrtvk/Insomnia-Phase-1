@@ -16,6 +16,7 @@ public class InsomniaGUI extends JFrame {
     private boolean hideInSystemTray = false;
 
     public InsomniaGUI() {
+
         setPreferredSize(new Dimension(1100, 600));
         setMinimumSize(new Dimension(1100, 600));
         setTitle("Insomnia-My Request\n");
@@ -66,6 +67,7 @@ public class InsomniaGUI extends JFrame {
         setVisible(true);
 
     }
+
     public void initDarkMode() {
         insomniaMenuBar.getDark().addActionListener(new ActionListener() {
             @Override
@@ -98,6 +100,7 @@ public class InsomniaGUI extends JFrame {
         });
 
     }
+
     public void initLightMode() {
         insomniaMenuBar.getLight().addActionListener(new ActionListener() {
             @Override
@@ -130,6 +133,7 @@ public class InsomniaGUI extends JFrame {
         });
 
     }
+
     public void initSystemTray() {
         insomniaMenuBar.getApplicationSubMenu2().addActionListener(new ActionListener() {
             @Override
@@ -187,6 +191,7 @@ public class InsomniaGUI extends JFrame {
             }
         });
     }
+
     public void initFullScreenMode() {
         insomniaMenuBar.gettFullScreen().addActionListener(new ActionListener() {
             @Override
@@ -198,6 +203,7 @@ public class InsomniaGUI extends JFrame {
         });
 
     }
+
     public void initSideBar() {
         insomniaMenuBar.gettSideBar().addActionListener(new ActionListener() {
             @Override
