@@ -70,6 +70,11 @@ public class CenterSidePanel extends JPanel {
         initQueryTab();
         initHeaderTab();
 
+        docsPanel = new JPanel();
+        docsPanel.setBackground(Color.DARK_GRAY);
+        tabbedPane.addTab("      Docs      ", docsPanel);
+
+
     }
     public void initQueryTab(){
         queryPanel = new JPanel();
@@ -240,4 +245,5 @@ public class CenterSidePanel extends JPanel {
         headerPanel.add(newRequestBtn3, gbc);
 
     }
+
 }
