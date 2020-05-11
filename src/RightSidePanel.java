@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class RightSidePanel extends JPanel {
@@ -29,6 +30,14 @@ public class RightSidePanel extends JPanel {
         statusPanel.setPreferredSize(new Dimension(100, 51));
         statusPanel.setMinimumSize(new Dimension(100, 100));
         add(statusPanel, BorderLayout.NORTH);
+
+        dataTimeStatus = new JLabel(" 6.64 S");
+        dataTimeStatus.setBounds(252, 10, 59, 31);
+        dataTimeStatus.setBackground(Color.LIGHT_GRAY);
+        dataTimeStatus.setOpaque(true);
+        dataTimeStatus.setForeground(Color.DARK_GRAY);
+        dataTimeStatus.setBorder(new MatteBorder(3, 3, 3, 3, Color.LIGHT_GRAY));
+        statusPanel.add(dataTimeStatus);
 
     }
 }
