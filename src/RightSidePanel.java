@@ -56,5 +56,16 @@ public class RightSidePanel extends JPanel {
         dataSizeStatus.setBackground(Color.LIGHT_GRAY);
         statusPanel.add(dataSizeStatus);
 
+        initRightSideTabs();
+
+    }
+    public void initRightSideTabs(){
+        rightSideTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        rightSideTabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        rightSideTabbedPane.setBackground(Color.DARK_GRAY);
+        rightSideTabbedPane.setOpaque(true);
+        add(rightSideTabbedPane, BorderLayout.CENTER);
+
+
     }
 }
