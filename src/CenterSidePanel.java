@@ -309,4 +309,53 @@ public class CenterSidePanel extends JPanel {
         urlPanel.add(saveBtn, gbc);
 
     }
+
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public JPanel getAuthPanel() {
+        return authPanel;
+    }
+
+    public JPanel getHeaderPanel() {
+        return headerPanel;
+    }
+
+    public JPanel getDocsPanel() {
+        return docsPanel;
+    }
+
+    public JPanel getUrlPanel() {
+        return urlPanel;
+    }
+
+    public JPanel getQueryPanel() {
+        return queryPanel;
+    }
+
+    public JPanel getBodyPanel() {
+        return bodyPanel;
+    }
+
+    public JTextField getUrlPreview() {
+        return urlPreview;
+    }
+
+    public JTextField getNameText() {
+        return nameText;
+    }
+
+    public JTextField getNewValueText() {
+        return newValueText;
+    }
+
+    public JTextField getHeaderText() {
+        return headerText;
+    }
+
+    public JTextField getValueText() {
+        return valueText;
+    }
+
 }
