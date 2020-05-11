@@ -198,5 +198,24 @@ public class InsomniaGUI extends JFrame {
         });
 
     }
+    public void initSideBar() {
+        insomniaMenuBar.gettSideBar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tSideBarCounter++;
+                if (tSideBarCounter % 2 == 0) {
+                    leftSidePanel.getFilterTextField().setVisible(false);
+                    leftSidePanel.getNewRequestBtn().setVisible(false);
+                    leftSidePanel.getRequestsTree().setVisible(false);
+                } else {
+                    leftSidePanel.getFilterTextField().setVisible(true);
+                    leftSidePanel.getNewRequestBtn().setVisible(true);
+                    leftSidePanel.getRequestsTree().setVisible(true);
+                }
+            }
+
+        });
+
+    }
 
 }
