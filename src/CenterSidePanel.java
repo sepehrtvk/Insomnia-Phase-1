@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CenterSidePanel extends JPanel {
 
@@ -47,6 +49,22 @@ public class CenterSidePanel extends JPanel {
         tabbedPane.setBackgroundAt(0, Color.GRAY);
         bodyPanel.setLayout(new BorderLayout());
 
+        bodyTypeComboBox = new JComboBox(new String[]{"Form Data", "JSON", "Binary Data"});
+        bodyTypeComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")){
+                    JFileChooser jFileChooser = new JFileChooser();
+                    jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                    jFileChooser.showOpenDialog(new JFrame());
+                }
+            }
+        });
+        bodyPanel.add(bodyTypeComboBox, BorderLayout.NORTH);
+
+        authPanel = new JPanel();
+        authPanel.setBackground(Color.DARK_GRAY);
+        tabbedPane.addTab("      Auth      ", authPanel);
 
     }
 }
