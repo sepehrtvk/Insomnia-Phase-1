@@ -41,5 +41,12 @@ public class CenterSidePanel extends JPanel {
         tabbedPane.setBackground(Color.GRAY);
         add(tabbedPane, BorderLayout.CENTER);
 
+        bodyPanel = new JPanel();
+        bodyPanel.setBackground(Color.DARK_GRAY);
+        tabbedPane.addTab("      Body      ", bodyPanel);
+        tabbedPane.setBackgroundAt(0, Color.GRAY);
+        bodyPanel.setLayout(new BorderLayout());
+
+
     }
 }
