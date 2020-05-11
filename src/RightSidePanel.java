@@ -98,5 +98,11 @@ public class RightSidePanel extends JPanel {
         nameRightSideText.setColumns(13);
         headerInRightSide.add(nameRightSideText);
 
+        copyToClipboardBtn = new JButton("Copy To Clipboard");
+        copyToClipboardBtn.setBackground(Color.LIGHT_GRAY);
+        copyToClipboardBtn.setFont(new Font("Papyrus", Font.PLAIN, 12));
+        copyToClipboardBtn.setBounds(159, 157, 160, 40);
+        headerInRightSide.add(copyToClipboardBtn);
+
     }
 }
