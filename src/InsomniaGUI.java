@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InsomniaGUI extends JFrame {
 
@@ -53,15 +55,48 @@ public class InsomniaGUI extends JFrame {
 
 
         insomniaMenuBar = new InsomniaMenuBar();
-//        initFullScreenMode();
-//        initSideBar();
-//        initSystemTray();
-//        initDarkMode();
-//        initLightMode();
+        initFullScreenMode();
+        initSideBar();
+        initSystemTray();
+        initDarkMode();
+        initLightMode();
 
         setJMenuBar(insomniaMenuBar);
 
         setVisible(true);
 
     }
+    public void initDarkMode() {
+        insomniaMenuBar.getDark().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                leftSidePanel.getFilterTextField().setBackground(Color.gray);
+                leftSidePanel.setBackground(Color.darkGray);
+                rightSidePanel.setBackground(Color.darkGray);
+                rightSidePanel.getHeaderInRightSide().setBackground(Color.darkGray);
+                rightSidePanel.getMessageBody().setBackground(Color.darkGray);
+                centerSidePanel.getUrlPanel().setBackground(Color.gray);
+                rightSidePanel.getRightSideTabbedPane().setBackground(Color.darkGray);
+                rightSidePanel.getStatusPanel().setBackground(Color.gray);
+                rightSidePanel.getNameRightSideText().setBackground(Color.gray);
+                rightSidePanel.getValueRightSideText().setBackground(Color.gray);
+                centerSidePanel.setBackground(Color.darkGray);
+                leftSidePanel.getRequestsTree().setBackground(Color.darkGray);
+                centerSidePanel.getAuthPanel().setBackground(Color.darkGray);
+                centerSidePanel.getDocsPanel().setBackground(Color.darkGray);
+                centerSidePanel.getHeaderPanel().setBackground(Color.darkGray);
+                centerSidePanel.getTabbedPane().setBackground(Color.darkGray);
+                centerSidePanel.getBodyPanel().setBackground(Color.darkGray);
+                centerSidePanel.getQueryPanel().setBackground(Color.darkGray);
+                centerSidePanel.getHeaderText().setBackground(Color.gray);
+                centerSidePanel.getNameText().setBackground(Color.gray);
+                centerSidePanel.getNewValueText().setBackground(Color.gray);
+                centerSidePanel.getValueText().setBackground(Color.gray);
+                centerSidePanel.getUrlPreview().setBackground(Color.gray);
+
+            }
+        });
+
+    }
+
 }
