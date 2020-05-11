@@ -10,10 +10,10 @@ public class InsomniaGUI extends JFrame {
     private final InsomniaMenuBar insomniaMenuBar;
     private GridBagLayout gridBagLayout;
     private GridBagConstraints gbc;
-    private final leftSidePanel leftSidePanel;
-    private centerSidePanel centerSidePanel;
-    private rightSidePanel rightSidePanel;
-    private boolean hideInSytemTray = false;
+    private final LeftSidePanel LeftSidePanel;
+    private CenterSidePanel CenterSidePanel;
+    private RightSidePanel RightSidePanel;
+    private boolean hideInSystemTray = false;
 
     public InsomniaGUI() {
         setPreferredSize(new Dimension(1100, 600));
@@ -35,23 +35,23 @@ public class InsomniaGUI extends JFrame {
 
         gbc = new GridBagConstraints();
 
-        leftSidePanel = new leftSidePanel();
+        LeftSidePanel = new LeftSidePanel();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 0;
         gbc.gridy = 0;
-        add(leftSidePanel, gbc);
+        add(LeftSidePanel, gbc);
 
-        centerSidePanel = new centerSidePanel();
+        CenterSidePanel = new CenterSidePanel();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 1;
         gbc.gridy = 0;
-        add(centerSidePanel, gbc);
+        add(CenterSidePanel, gbc);
 
-        rightSidePanel = new rightSidePanel();
+        RightSidePanel = new RightSidePanel();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 2;
         gbc.gridy = 0;
-        add(rightSidePanel, gbc);
+        add(RightSidePanel, gbc);
 
 
         insomniaMenuBar = new InsomniaMenuBar();
@@ -70,29 +70,29 @@ public class InsomniaGUI extends JFrame {
         insomniaMenuBar.getDark().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                leftSidePanel.getFilterTextField().setBackground(Color.gray);
-                leftSidePanel.setBackground(Color.darkGray);
-                rightSidePanel.setBackground(Color.darkGray);
-                rightSidePanel.getHeaderInRightSide().setBackground(Color.darkGray);
-                rightSidePanel.getMessageBody().setBackground(Color.darkGray);
-                centerSidePanel.getUrlPanel().setBackground(Color.gray);
-                rightSidePanel.getRightSideTabbedPane().setBackground(Color.darkGray);
-                rightSidePanel.getStatusPanel().setBackground(Color.gray);
-                rightSidePanel.getNameRightSideText().setBackground(Color.gray);
-                rightSidePanel.getValueRightSideText().setBackground(Color.gray);
-                centerSidePanel.setBackground(Color.darkGray);
-                leftSidePanel.getRequestsTree().setBackground(Color.darkGray);
-                centerSidePanel.getAuthPanel().setBackground(Color.darkGray);
-                centerSidePanel.getDocsPanel().setBackground(Color.darkGray);
-                centerSidePanel.getHeaderPanel().setBackground(Color.darkGray);
-                centerSidePanel.getTabbedPane().setBackground(Color.darkGray);
-                centerSidePanel.getBodyPanel().setBackground(Color.darkGray);
-                centerSidePanel.getQueryPanel().setBackground(Color.darkGray);
-                centerSidePanel.getHeaderText().setBackground(Color.gray);
-                centerSidePanel.getNameText().setBackground(Color.gray);
-                centerSidePanel.getNewValueText().setBackground(Color.gray);
-                centerSidePanel.getValueText().setBackground(Color.gray);
-                centerSidePanel.getUrlPreview().setBackground(Color.gray);
+                LeftSidePanel.getFilterTextField().setBackground(Color.gray);
+                LeftSidePanel.setBackground(Color.darkGray);
+                RightSidePanel.setBackground(Color.darkGray);
+                RightSidePanel.getHeaderInRightSide().setBackground(Color.darkGray);
+                RightSidePanel.getMessageBody().setBackground(Color.darkGray);
+                CenterSidePanel.getUrlPanel().setBackground(Color.gray);
+                RightSidePanel.getRightSideTabbedPane().setBackground(Color.darkGray);
+                RightSidePanel.getStatusPanel().setBackground(Color.gray);
+                RightSidePanel.getNameRightSideText().setBackground(Color.gray);
+                RightSidePanel.getValueRightSideText().setBackground(Color.gray);
+                CenterSidePanel.setBackground(Color.darkGray);
+                LeftSidePanel.getRequestsTree().setBackground(Color.darkGray);
+                CenterSidePanel.getAuthPanel().setBackground(Color.darkGray);
+                CenterSidePanel.getDocsPanel().setBackground(Color.darkGray);
+                CenterSidePanel.getHeaderPanel().setBackground(Color.darkGray);
+                CenterSidePanel.getTabbedPane().setBackground(Color.darkGray);
+                CenterSidePanel.getBodyPanel().setBackground(Color.darkGray);
+                CenterSidePanel.getQueryPanel().setBackground(Color.darkGray);
+                CenterSidePanel.getHeaderText().setBackground(Color.gray);
+                CenterSidePanel.getNameText().setBackground(Color.gray);
+                CenterSidePanel.getNewValueText().setBackground(Color.gray);
+                CenterSidePanel.getValueText().setBackground(Color.gray);
+                CenterSidePanel.getUrlPreview().setBackground(Color.gray);
 
             }
         });
@@ -102,29 +102,29 @@ public class InsomniaGUI extends JFrame {
         insomniaMenuBar.getLight().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                leftSidePanel.getFilterTextField().setBackground(Color.pink);
-                leftSidePanel.setBackground(Color.cyan);
-                rightSidePanel.setBackground(Color.cyan);
-                rightSidePanel.getHeaderInRightSide().setBackground(Color.cyan);
-                rightSidePanel.getMessageBody().setBackground(Color.cyan);
-                rightSidePanel.getRightSideTabbedPane().setBackground(Color.cyan);
-                rightSidePanel.getStatusPanel().setBackground(Color.PINK);
-                rightSidePanel.getNameRightSideText().setBackground(Color.PINK);
-                rightSidePanel.getValueRightSideText().setBackground(Color.PINK);
-                centerSidePanel.getUrlPanel().setBackground(Color.pink);
-                centerSidePanel.setBackground(Color.cyan);
-                leftSidePanel.getRequestsTree().setBackground(Color.cyan);
-                centerSidePanel.getAuthPanel().setBackground(Color.cyan);
-                centerSidePanel.getDocsPanel().setBackground(Color.cyan);
-                centerSidePanel.getHeaderPanel().setBackground(Color.cyan);
-                centerSidePanel.getTabbedPane().setBackground(Color.cyan);
-                centerSidePanel.getBodyPanel().setBackground(Color.cyan);
-                centerSidePanel.getQueryPanel().setBackground(Color.cyan);
-                centerSidePanel.getHeaderText().setBackground(Color.pink);
-                centerSidePanel.getNameText().setBackground(Color.pink);
-                centerSidePanel.getNewValueText().setBackground(Color.pink);
-                centerSidePanel.getValueText().setBackground(Color.pink);
-                centerSidePanel.getUrlPreview().setBackground(Color.PINK);
+                LeftSidePanel.getFilterTextField().setBackground(Color.pink);
+                LeftSidePanel.setBackground(Color.cyan);
+                RightSidePanel.setBackground(Color.cyan);
+                RightSidePanel.getHeaderInRightSide().setBackground(Color.cyan);
+                RightSidePanel.getMessageBody().setBackground(Color.cyan);
+                RightSidePanel.getRightSideTabbedPane().setBackground(Color.cyan);
+                RightSidePanel.getStatusPanel().setBackground(Color.PINK);
+                RightSidePanel.getNameRightSideText().setBackground(Color.PINK);
+                RightSidePanel.getValueRightSideText().setBackground(Color.PINK);
+                CenterSidePanel.getUrlPanel().setBackground(Color.pink);
+                CenterSidePanel.setBackground(Color.cyan);
+                LeftSidePanel.getRequestsTree().setBackground(Color.cyan);
+                CenterSidePanel.getAuthPanel().setBackground(Color.cyan);
+                CenterSidePanel.getDocsPanel().setBackground(Color.cyan);
+                CenterSidePanel.getHeaderPanel().setBackground(Color.cyan);
+                CenterSidePanel.getTabbedPane().setBackground(Color.cyan);
+                CenterSidePanel.getBodyPanel().setBackground(Color.cyan);
+                CenterSidePanel.getQueryPanel().setBackground(Color.cyan);
+                CenterSidePanel.getHeaderText().setBackground(Color.pink);
+                CenterSidePanel.getNameText().setBackground(Color.pink);
+                CenterSidePanel.getNewValueText().setBackground(Color.pink);
+                CenterSidePanel.getValueText().setBackground(Color.pink);
+                CenterSidePanel.getUrlPreview().setBackground(Color.PINK);
 
             }
         });
@@ -204,13 +204,13 @@ public class InsomniaGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 tSideBarCounter++;
                 if (tSideBarCounter % 2 == 0) {
-                    leftSidePanel.getFilterTextField().setVisible(false);
-                    leftSidePanel.getNewRequestBtn().setVisible(false);
-                    leftSidePanel.getRequestsTree().setVisible(false);
+                    LeftSidePanel.getFilterTextField().setVisible(false);
+                    LeftSidePanel.getNewRequestBtn().setVisible(false);
+                    LeftSidePanel.getRequestsTree().setVisible(false);
                 } else {
-                    leftSidePanel.getFilterTextField().setVisible(true);
-                    leftSidePanel.getNewRequestBtn().setVisible(true);
-                    leftSidePanel.getRequestsTree().setVisible(true);
+                    LeftSidePanel.getFilterTextField().setVisible(true);
+                    LeftSidePanel.getNewRequestBtn().setVisible(true);
+                    LeftSidePanel.getRequestsTree().setVisible(true);
                 }
             }
 
