@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 
 public class LeftSidePanel extends JPanel {
@@ -33,10 +35,31 @@ public class LeftSidePanel extends JPanel {
         filterTextField.setColumns(10);
         add(filterTextField);
 
+        requestsTree = new JTree();
+        requestsTree.setBounds(1, 87, 253, 491);
+        requestsTree.setPreferredSize(new Dimension(100, 500));
+        requestsTree.setBackground(Color.DARK_GRAY);
+        requestsTree.setModel(new DefaultTreeModel(new DefaultMutableTreeNode("Requests") {
+            {
+                DefaultMutableTreeNode node1, node2;
 
+                node1 = new DefaultMutableTreeNode();
+                node1.add(new DefaultMutableTreeNode());
+                node1.add(new DefaultMutableTreeNode());
+                add(node1);
 
+                node2 = new DefaultMutableTreeNode();
+                node2.add(new DefaultMutableTreeNode());
+                add(node2);
+            }
+        }));
 
+        add(requestsTree);
 
+        newRequestBtn = new JButton("✚");
+        newRequestBtn.setBounds(214, 55, 39, 29);
+        newRequestBtn.setFont(new Font("Plantagenet Cherokee", Font.PLAIN, 15));
+        add(newRequestBtn);
 
     }
 }
