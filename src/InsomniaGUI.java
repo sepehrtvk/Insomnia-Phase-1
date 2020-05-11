@@ -130,5 +130,62 @@ public class InsomniaGUI extends JFrame {
         });
 
     }
+    public void initSystemTray() {
+        insomniaMenuBar.getApplicationSubMenu2().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (insomniaMenuBar.getHideCheckBox().isSelected()) {
+
+                    if (!hideInSystemTray) {
+                        setState(JFrame.ICONIFIED);
+
+                        final PopupMenu popup = new PopupMenu();
+                        Image icon2 = Toolkit.getDefaultToolkit().getImage("insomniaicon.png");
+                        final TrayIcon trayIcon = new TrayIcon(icon2, "Insomnia", popup);
+
+                        final SystemTray tray = SystemTray.getSystemTray();
+
+                        MenuItem aboutItem = new MenuItem("About");
+                        aboutItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                ImageIcon icon = new ImageIcon("insomniaicon.png");
+                                JOptionPane.showMessageDialog(null, "Developer : \n  Name : Sepehr Tavakoli\n  Email : Sepehrtvk@aut.ac.ir   \n  Student Number : 9831111", "About", JOptionPane.INFORMATION_MESSAGE, icon);
+                            }
+                        });
+                        MenuItem exitItem = new MenuItem("Exit");
+                        exitItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                System.exit(0);
+                            }
+                        });
+                        MenuItem showItem = new MenuItem("Show");
+                        showItem.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                setExtendedState(JFrame.NORMAL);
+                            }
+                        });
+                        popup.add(aboutItem);
+                        popup.addSeparator();
+                        popup.add(showItem);
+                        popup.addSeparator();
+                        popup.add(exitItem);
+
+                        trayIcon.setPopupMenu(popup);
+
+                        try {
+                            tray.add(trayIcon);
+                        } catch (AWTException err) {
+                            System.out.println("TrayIcon could not be added.");
+                        }
+                        hideInSystemTray = true;
+                    } else setState(JFrame.ICONIFIED);
+
+                } else System.exit(0);
+            }
+        });
+    }
 
 }
