@@ -54,7 +54,7 @@ public class CenterSidePanel extends JPanel {
         bodyTypeComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")){
+                if ((bodyTypeComboBox.getSelectedItem()).equals("Binary Data")) {
                     JFileChooser jFileChooser = new JFileChooser();
                     jFileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                     jFileChooser.showOpenDialog(new JFrame());
@@ -69,6 +69,7 @@ public class CenterSidePanel extends JPanel {
 
         initQueryTab();
         initHeaderTab();
+        initUrlPanel();
 
         docsPanel = new JPanel();
         docsPanel.setBackground(Color.DARK_GRAY);
@@ -76,7 +77,8 @@ public class CenterSidePanel extends JPanel {
 
 
     }
-    public void initQueryTab(){
+
+    public void initQueryTab() {
         queryPanel = new JPanel();
         queryPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("      Query       ", queryPanel);
@@ -100,14 +102,14 @@ public class CenterSidePanel extends JPanel {
         gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 2;
         gbc.gridy = 0;
-        queryPanel.add(urlPreview,gbc);
+        queryPanel.add(urlPreview, gbc);
 
         copyUrl = new JButton("Copy");
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 5;
         gbc.gridy = 0;
-        queryPanel.add(copyUrl,gbc);
+        queryPanel.add(copyUrl, gbc);
 
 
         lineLabel = new JLabel("𝌆");
@@ -134,7 +136,7 @@ public class CenterSidePanel extends JPanel {
         newValueText.setText("New Value");
 
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(0,0,5,5);
+        gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 3;
         gbc.gridy = 1;
         queryPanel.add(newValueText, gbc);
@@ -142,16 +144,16 @@ public class CenterSidePanel extends JPanel {
         activeHeaderCheckBox = new JCheckBox("");
 
         gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(0,0,5,5);
+        gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 4;
         gbc.gridy = 1;
 
-        queryPanel.add(activeHeaderCheckBox,gbc);
+        queryPanel.add(activeHeaderCheckBox, gbc);
 
         deleteHeaderBtn = new JButton("☓");
 
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(0,0,5,5);
+        gbc.insets = new Insets(0, 0, 5, 5);
         gbc.gridx = 5;
         gbc.gridy = 1;
 
@@ -167,10 +169,9 @@ public class CenterSidePanel extends JPanel {
         queryPanel.add(newRequestBtn2, gbc);
 
 
-
     }
 
-    public void initHeaderTab(){
+    public void initHeaderTab() {
 
         headerPanel = new JPanel();
         headerPanel.setBackground(Color.DARK_GRAY);
@@ -246,4 +247,66 @@ public class CenterSidePanel extends JPanel {
 
     }
 
+    public void initUrlPanel() {
+        urlPanel = new JPanel();
+        urlPanel.setBackground(Color.gray);
+        urlPanel.setPreferredSize(new Dimension(10, 51));
+
+        final GridBagConstraints gbc = new GridBagConstraints();
+
+
+        GridBagLayout gblUrlPanel = new GridBagLayout();
+        gblUrlPanel.columnWidths = new int[]{0, 50, 250, 50, 0};
+        gblUrlPanel.rowHeights = new int[]{51, 0};
+        gblUrlPanel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+        gblUrlPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+
+        urlPanel.setLayout(gblUrlPanel);
+        add(urlPanel, BorderLayout.NORTH);
+
+        methodsComboBox = new JComboBox(new String[]{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"});
+        methodsComboBox.setMinimumSize(new Dimension(60, 25));
+        methodsComboBox.setPreferredSize(new Dimension(80, 51));
+
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        methodsComboBox.setBackground(Color.WHITE);
+        urlPanel.add(methodsComboBox, gbc);
+
+        urlText = new JTextField();
+        urlText.setPreferredSize(new Dimension(300, 51));
+        urlText.setText("                                    URL");
+
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        urlPanel.add(urlText, gbc);
+
+        sendBtn = new JButton("SEND");
+        sendBtn.setPreferredSize(new Dimension(80, 27));
+        sendBtn.setBackground(Color.WHITE);
+
+        saveBtn = new JButton("SAVE");
+        saveBtn.setPreferredSize(new Dimension(80, 27));
+        saveBtn.setBackground(Color.WHITE);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+
+        urlPanel.add(sendBtn, gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.SOUTH;
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+
+        urlPanel.add(saveBtn, gbc);
+
+    }
 }
