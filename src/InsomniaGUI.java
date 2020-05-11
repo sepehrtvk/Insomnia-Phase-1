@@ -187,5 +187,16 @@ public class InsomniaGUI extends JFrame {
             }
         });
     }
+    public void initFullScreenMode() {
+        insomniaMenuBar.gettFullScreen().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tFullScreenCounter++;
+                if (tFullScreenCounter % 2 != 0) setExtendedState(JFrame.NORMAL);
+                else setExtendedState(JFrame.MAXIMIZED_BOTH);
+            }
+        });
+
+    }
 
 }
