@@ -98,5 +98,37 @@ public class InsomniaGUI extends JFrame {
         });
 
     }
+    public void initLightMode() {
+        insomniaMenuBar.getLight().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                leftSidePanel.getFilterTextField().setBackground(Color.pink);
+                leftSidePanel.setBackground(Color.cyan);
+                rightSidePanel.setBackground(Color.cyan);
+                rightSidePanel.getHeaderInRightSide().setBackground(Color.cyan);
+                rightSidePanel.getMessageBody().setBackground(Color.cyan);
+                rightSidePanel.getRightSideTabbedPane().setBackground(Color.cyan);
+                rightSidePanel.getStatusPanel().setBackground(Color.PINK);
+                rightSidePanel.getNameRightSideText().setBackground(Color.PINK);
+                rightSidePanel.getValueRightSideText().setBackground(Color.PINK);
+                centerSidePanel.getUrlPanel().setBackground(Color.pink);
+                centerSidePanel.setBackground(Color.cyan);
+                leftSidePanel.getRequestsTree().setBackground(Color.cyan);
+                centerSidePanel.getAuthPanel().setBackground(Color.cyan);
+                centerSidePanel.getDocsPanel().setBackground(Color.cyan);
+                centerSidePanel.getHeaderPanel().setBackground(Color.cyan);
+                centerSidePanel.getTabbedPane().setBackground(Color.cyan);
+                centerSidePanel.getBodyPanel().setBackground(Color.cyan);
+                centerSidePanel.getQueryPanel().setBackground(Color.cyan);
+                centerSidePanel.getHeaderText().setBackground(Color.pink);
+                centerSidePanel.getNameText().setBackground(Color.pink);
+                centerSidePanel.getNewValueText().setBackground(Color.pink);
+                centerSidePanel.getValueText().setBackground(Color.pink);
+                centerSidePanel.getUrlPreview().setBackground(Color.PINK);
+
+            }
+        });
+
+    }
 
 }
