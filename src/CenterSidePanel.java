@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,8 +36,10 @@ public class CenterSidePanel extends JPanel {
     private JButton saveBtn;
     private JPanel queryPanel;
     private JPanel bodyPanel;
+    private LeftSidePanel leftSidePanel;
 
     public CenterSidePanel() {
+        leftSidePanel = new LeftSidePanel();
         setBorder(new LineBorder(Color.BLACK));
         setBackground(Color.DARK_GRAY);
         setLayout(new BorderLayout(0, 0));
@@ -286,6 +291,33 @@ public class CenterSidePanel extends JPanel {
         saveBtn = new JButton("SAVE");
         saveBtn.setPreferredSize(new Dimension(80, 27));
         saveBtn.setBackground(Color.WHITE);
+        saveBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                final JFrame jFrame = new JFrame("Choose group");
+                jFrame.setBounds(350, 200, 300, 200);
+                jFrame.setMinimumSize(new Dimension(300, 200));
+                jFrame.setLayout(new BorderLayout());
+                jFrame.add(leftSidePanel.getRequestsTree(), BorderLayout.CENTER);
+                final JTextField jTextField = new JTextField("New Group");
+                final JButton jButton = new JButton("Add");
+                jButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        final String name = jTextField.getText();
+                        DefaultTreeModel model = (DefaultTreeModel) leftSidePanel.getRequestsTree().getModel();
+                        DefaultMutableTreeNode root = (DefaultMutableTreeNode) leftSidePanel.getRequestsTree().getModel().getRoot();
+                        DefaultMutableTreeNode child = new DefaultMutableTreeNode(name);
+                        model.insertNodeInto(child, root, root.getChildCount());
+                        leftSidePanel.getRequestsTree().scrollPathToVisible(new TreePath(child.getPath()));
+                    }
+                });
+                jFrame.add(jTextField, BorderLayout.NORTH);
+                jFrame.add(jButton, BorderLayout.SOUTH);
+
+                jFrame.setVisible(true);
+            }
+        });
 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.NORTH;
@@ -365,4 +397,7 @@ public class CenterSidePanel extends JPanel {
         return valueText;
     }
 
+    public JButton getSaveBtn() {
+        return saveBtn;
+    }
 }

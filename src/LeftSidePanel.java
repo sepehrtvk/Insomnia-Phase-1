@@ -4,7 +4,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LeftSidePanel extends JPanel {
 
@@ -17,7 +20,6 @@ public class LeftSidePanel extends JPanel {
         setBackground(Color.DARK_GRAY);
         setLayout(null);
         setBorder(new LineBorder(Color.BLACK));
-
 
         insomniaBtn = new JButton("  Insomnia                              >   ");
         insomniaBtn.setBounds(0, 0, 253, 45);
@@ -60,7 +62,6 @@ public class LeftSidePanel extends JPanel {
         newRequestBtn.setBounds(214, 55, 39, 29);
         newRequestBtn.setFont(new Font("Plantagenet Cherokee", Font.PLAIN, 15));
         add(newRequestBtn);
-
     }
 
     public JTextField getFilterTextField() {
@@ -69,6 +70,10 @@ public class LeftSidePanel extends JPanel {
 
     public JTree getRequestsTree() {
         return requestsTree;
+    }
+
+    public void setRequestsTree(JTree requestsTree) {
+        this.requestsTree = requestsTree;
     }
 
     public JButton getNewRequestBtn() {
