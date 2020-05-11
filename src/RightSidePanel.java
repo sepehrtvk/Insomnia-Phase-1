@@ -61,7 +61,8 @@ public class RightSidePanel extends JPanel {
         initRightSideTabs();
 
     }
-    public void initRightSideTabs(){
+
+    public void initRightSideTabs() {
         rightSideTabbedPane = new JTabbedPane(JTabbedPane.TOP);
         rightSideTabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         rightSideTabbedPane.setBackground(Color.DARK_GRAY);
@@ -105,6 +106,7 @@ public class RightSidePanel extends JPanel {
         headerInRightSide.add(copyToClipboardBtn);
 
     }
+
     public JPanel getMessageBody() {
         return messageBody;
     }
