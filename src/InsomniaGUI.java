@@ -95,6 +95,12 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getNewValueText().setBackground(Color.gray);
                 CenterSidePanel.getValueText().setBackground(Color.gray);
                 CenterSidePanel.getUrlPreview().setBackground(Color.gray);
+                for(Component compo : CenterSidePanel.getHeaderPanel().getComponents()){
+                    compo.setBackground(Color.gray);
+                }
+                for(Component compo : CenterSidePanel.getQueryPanel().getComponents()){
+                    compo.setBackground(Color.gray);
+                }
 
             }
         });
@@ -128,6 +134,12 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getNewValueText().setBackground(Color.pink);
                 CenterSidePanel.getValueText().setBackground(Color.pink);
                 CenterSidePanel.getUrlPreview().setBackground(Color.PINK);
+                for(Component compo : CenterSidePanel.getHeaderPanel().getComponents()){
+                    compo.setBackground(Color.PINK);
+                }
+                for(Component compo : CenterSidePanel.getQueryPanel().getComponents()){
+                    compo.setBackground(Color.PINK);
+                }
 
             }
         });
