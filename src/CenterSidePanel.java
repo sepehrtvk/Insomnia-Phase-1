@@ -7,6 +7,8 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CenterSidePanel extends JPanel {
 
@@ -27,7 +29,6 @@ public class CenterSidePanel extends JPanel {
     private JTextField valueText;
     private JCheckBox activeHeaderCheckBox2;
     private JButton deleteHeaderBtn2;
-    private JButton newRequestBtn3;
     private JPanel docsPanel;
     private JPanel urlPanel;
     private JComboBox methodsComboBox;
@@ -37,6 +38,8 @@ public class CenterSidePanel extends JPanel {
     private JPanel queryPanel;
     private JPanel bodyPanel;
     private LeftSidePanel leftSidePanel;
+    private int i =2;
+
 
     public CenterSidePanel() {
         leftSidePanel = new LeftSidePanel();
@@ -176,10 +179,10 @@ public class CenterSidePanel extends JPanel {
         tabbedPane.addTab("    Header    ", headerPanel);
 
         GridBagLayout gbl_headerPanel = new GridBagLayout();
-        gbl_headerPanel.columnWidths = new int[]{18, 0, 160, 163, 0, 18, 41, 0};
-        gbl_headerPanel.rowHeights = new int[]{37, 40, 40, 0};
-        gbl_headerPanel.columnWeights = new double[]{1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-        gbl_headerPanel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+//        gbl_headerPanel.columnWidths = new int[]{18, 0, 160, 163, 0, 18, 41, 0};
+//        gbl_headerPanel.rowHeights = new int[]{40, 40, 40, 40};
+//        gbl_headerPanel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+//        gbl_headerPanel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
         headerPanel.setLayout(gbl_headerPanel);
         final GridBagConstraints gbc = new GridBagConstraints();
 
@@ -193,7 +196,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 1;
         headerPanel.add(lineLabel2, gbc);
 
-        headerText = new JTextField();
+        headerText = new JTextField(10);
         headerText.setBackground(Color.GRAY);
         headerText.setText("Header");
 
@@ -224,6 +227,19 @@ public class CenterSidePanel extends JPanel {
         headerPanel.add(activeHeaderCheckBox2, gbc);
 
         deleteHeaderBtn2 = new JButton("☓");
+        deleteHeaderBtn2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                headerPanel.remove(headerText);
+                headerPanel.remove(valueText);
+                headerPanel.remove(activeHeaderCheckBox2);
+                headerPanel.remove(deleteHeaderBtn2);
+                headerPanel.remove(lineLabel2);
+                revalidate();
+                repaint();
+
+            }
+        });
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 0, 5, 5);
@@ -231,20 +247,70 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 1;
 
         headerPanel.add(deleteHeaderBtn2, gbc);
+        headerText.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                while (i<7) {
+                    final JLabel lineLabel_2 = new JLabel("𝌆");
+                    lineLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 21));
+                    gbc.anchor = GridBagConstraints.NORTHWEST;
+                    gbc.insets = new Insets(0, 0, 5, 5);
+                    gbc.gridx = 1;
+                    gbc.gridy = i;
+                    headerPanel.add(lineLabel_2, gbc);
 
+                    final JTextField headerText_2 = new JTextField(10);
+                    headerText_2.setBackground(Color.GRAY);
+                    headerText_2.setText("Header");
+                    gbc.fill = GridBagConstraints.BOTH;
+                    gbc.insets = new Insets(0, 0, 5, 5);
+                    gbc.gridx = 2;
+                    gbc.gridy = i;
+                    headerPanel.add(headerText_2, gbc);
 
-        newRequestBtn3 = new JButton("✚ New");
-        newRequestBtn3.setFont(new Font("Plantagenet Cherokee", Font.PLAIN, 15));
+                    final JTextField valueText_2 = new JTextField(10);
+                    valueText_2.setBackground(Color.GRAY);
+                    valueText_2.setText("Value");
 
-        gbc.anchor = GridBagConstraints.NORTHWEST;
-        gbc.insets = new Insets(0, 0, 0, 5);
-        gbc.gridx = 2;
-        gbc.gridy = 2;
+                    gbc.fill = GridBagConstraints.BOTH;
+                    gbc.insets = new Insets(0, 0, 5, 5);
+                    gbc.gridx = 3;
+                    gbc.gridy = i;
+                    headerPanel.add(valueText_2, gbc);
 
-        headerPanel.add(newRequestBtn3, gbc);
+                    final JCheckBox activeHeaderCheckBox_2 = new JCheckBox("");
 
+                    gbc.anchor = GridBagConstraints.WEST;
+                    gbc.insets = new Insets(0, 0, 5, 5);
+                    gbc.gridx = 4;
+                    gbc.gridy = i;
+                    headerPanel.add(activeHeaderCheckBox_2, gbc);
+
+                    final JButton deleteHeaderBtn_2 = new JButton("☓");
+                    deleteHeaderBtn_2.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            headerPanel.remove(headerText_2);
+                            headerPanel.remove(valueText_2);
+                            headerPanel.remove(activeHeaderCheckBox_2);
+                            headerPanel.remove(deleteHeaderBtn_2);
+                            headerPanel.remove(lineLabel_2);
+                            revalidate();
+                            repaint();
+                        }
+                    });
+
+                    gbc.fill = GridBagConstraints.BOTH;
+                    gbc.insets = new Insets(0, 0, 5, 5);
+                    gbc.gridx = 5;
+                    gbc.gridy = i;
+                    headerPanel.add(deleteHeaderBtn_2, gbc);
+                    //headerText_2.addMouseListener(this);
+                    i++;
+                }
+            }
+        });
     }
-
     public void initUrlPanel() {
         urlPanel = new JPanel();
         urlPanel.setBackground(Color.gray);
@@ -397,7 +463,4 @@ public class CenterSidePanel extends JPanel {
         return valueText;
     }
 
-    public JButton getSaveBtn() {
-        return saveBtn;
-    }
 }
