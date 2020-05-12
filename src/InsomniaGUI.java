@@ -3,30 +3,62 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * the InsomniaGUI class which extends JFrame class , matches 3 main parts together and also contains the main frame for the
+ * Insomnia app.
+ *
+ * @author sepehr tavakoli
+ * @version 1.0
+ * @since 2020.05.01
+ */
+
 public class InsomniaGUI extends JFrame {
 
+    //show full screen mode.
     private int tFullScreenCounter = 1;
+
+    //show sidebar.
     private int tSideBarCounter = 1;
+
+    //the menubar.
     private final InsomniaMenuBar insomniaMenuBar;
+
+    //main layout.
     private GridBagLayout gridBagLayout;
+
+    //gbc.
     private GridBagConstraints gbc;
+
+    //left side panel.
     private final LeftSidePanel LeftSidePanel;
+
+    //center side panel.
     private CenterSidePanel CenterSidePanel;
+
+    //right side panel.
     private RightSidePanel RightSidePanel;
+
+    //show in system tray.
     private boolean hideInSystemTray = false;
 
+    /**
+     * this constructor makes the main GUI for the app.
+     */
     public InsomniaGUI() {
 
+        //make main frame.
         setPreferredSize(new Dimension(1100, 600));
         setMinimumSize(new Dimension(1100, 600));
         setTitle("Insomnia-My Request\n");
         setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //set icon for app.
         Image icon = Toolkit.getDefaultToolkit().getImage("insomniaicon.png");
         setIconImage(icon);
 
 
+        //set layout.
         gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{255, 555, 380, 0};
         gridBagLayout.rowHeights = new int[]{600, 0};
@@ -36,25 +68,28 @@ public class InsomniaGUI extends JFrame {
 
         gbc = new GridBagConstraints();
 
+        //add left panel.
         LeftSidePanel = new LeftSidePanel();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 0;
         gbc.gridy = 0;
         add(LeftSidePanel, gbc);
 
+        //add center panel.
         CenterSidePanel = new CenterSidePanel();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 1;
         gbc.gridy = 0;
         add(CenterSidePanel, gbc);
 
+        //add right panel.
         RightSidePanel = new RightSidePanel();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 2;
         gbc.gridy = 0;
         add(RightSidePanel, gbc);
 
-
+        //add menu bar.
         insomniaMenuBar = new InsomniaMenuBar();
         initFullScreenMode();
         initSideBar();
@@ -64,10 +99,14 @@ public class InsomniaGUI extends JFrame {
 
         setJMenuBar(insomniaMenuBar);
 
+        //show frame.
         setVisible(true);
 
     }
 
+    /**
+     * this initDarkMode method changes the background of program to make dark mode.
+     */
     public void initDarkMode() {
         insomniaMenuBar.getDark().addActionListener(new ActionListener() {
             @Override
@@ -95,10 +134,10 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getNewValueText().setBackground(Color.gray);
                 CenterSidePanel.getValueText().setBackground(Color.gray);
                 CenterSidePanel.getUrlPreview().setBackground(Color.gray);
-                for(Component compo : CenterSidePanel.getHeaderPanel().getComponents()){
+                for (Component compo : CenterSidePanel.getHeaderPanel().getComponents()) {
                     compo.setBackground(Color.gray);
                 }
-                for(Component compo : CenterSidePanel.getQueryPanel().getComponents()){
+                for (Component compo : CenterSidePanel.getQueryPanel().getComponents()) {
                     compo.setBackground(Color.gray);
                 }
 
@@ -106,6 +145,10 @@ public class InsomniaGUI extends JFrame {
         });
 
     }
+
+    /**
+     * this initLightMode method changes the background of program to make light mode.
+     */
 
     public void initLightMode() {
         insomniaMenuBar.getLight().addActionListener(new ActionListener() {
@@ -134,10 +177,10 @@ public class InsomniaGUI extends JFrame {
                 CenterSidePanel.getNewValueText().setBackground(Color.pink);
                 CenterSidePanel.getValueText().setBackground(Color.pink);
                 CenterSidePanel.getUrlPreview().setBackground(Color.PINK);
-                for(Component compo : CenterSidePanel.getHeaderPanel().getComponents()){
+                for (Component compo : CenterSidePanel.getHeaderPanel().getComponents()) {
                     compo.setBackground(Color.PINK);
                 }
-                for(Component compo : CenterSidePanel.getQueryPanel().getComponents()){
+                for (Component compo : CenterSidePanel.getQueryPanel().getComponents()) {
                     compo.setBackground(Color.PINK);
                 }
 
@@ -146,6 +189,10 @@ public class InsomniaGUI extends JFrame {
 
     }
 
+    /**
+     * this initSystemTray method makes the program be able to hide in system tray and put it back
+     * from the system tray.
+     */
     public void initSystemTray() {
         insomniaMenuBar.getApplicationSubMenu2().addActionListener(new ActionListener() {
             @Override
@@ -204,6 +251,9 @@ public class InsomniaGUI extends JFrame {
         });
     }
 
+    /**
+     * the initFullScreenMode method makes a fullscreen frame for the app.
+     */
     public void initFullScreenMode() {
         insomniaMenuBar.gettFullScreen().addActionListener(new ActionListener() {
             @Override
@@ -216,6 +266,9 @@ public class InsomniaGUI extends JFrame {
 
     }
 
+    /**
+     * this initSideBar hides the side bar and shows it again with another click on the button.
+     */
     public void initSideBar() {
         insomniaMenuBar.gettSideBar().addActionListener(new ActionListener() {
             @Override

@@ -10,54 +10,120 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * the CenterSidePanel class that extends JPanel , prepares center panel for the header , query , auth , docs and message body.
+ *
+ * @author sepehr tavakoli
+ * @version 1.0
+ * @since 2020.05.01
+ */
+
 public class CenterSidePanel extends JPanel {
 
+    //tabs.
     private JTabbedPane tabbedPane;
-    private final JComboBox bodyTypeComboBox;
-    private JPanel authPanel;
-    private JTextField urlPreview;
-    private JLabel lineLabel;
-    private JTextField nameText;
-    private JTextField newValueText;
-    private JCheckBox activeHeaderCheckBox;
-    private JButton deleteHeaderBtn;
-    private JButton newRequestBtn2;
-    private JPanel headerPanel;
-    private JLabel lineLabel2;
-    private JButton copyUrl;
-    private JTextField headerText;
-    private JTextField valueText;
-    private JCheckBox activeHeaderCheckBox2;
-    private JButton deleteHeaderBtn2;
-    private JPanel docsPanel;
-    private JPanel urlPanel;
-    private JComboBox methodsComboBox;
-    private JTextField urlText;
-    private JButton sendBtn;
-    private JButton saveBtn;
-    private JPanel queryPanel;
-    private JPanel bodyPanel;
-    private LeftSidePanel leftSidePanel;
-    private int i = 2;
 
+    //body type combobox.
+    private final JComboBox bodyTypeComboBox;
+
+    //auth panel.
+    private JPanel authPanel;
+
+    //url text field.
+    private JTextField urlPreview;
+
+    //line label.
+    private JLabel lineLabel;
+
+    //name text field.
+    private JTextField nameText;
+
+    //value text field.
+    private JTextField newValueText;
+
+    //activate or deactivate header.
+    private JCheckBox activeHeaderCheckBox;
+
+    //delete button.
+    private JButton deleteHeaderBtn;
+
+    //header panel.
+    private JPanel headerPanel;
+
+    //line label 2.
+    private JLabel lineLabel2;
+
+    //copy url button.
+    private JButton copyUrl;
+
+    //header text field.
+    private JTextField headerText;
+
+    //header value text
+    private JTextField valueText;
+
+    //active header check box.
+    private JCheckBox activeHeaderCheckBox2;
+
+    //delete header button.
+    private JButton deleteHeaderBtn2;
+
+    //docs panel;
+    private JPanel docsPanel;
+
+    //url panel.
+    private JPanel urlPanel;
+
+    //methods combobox.
+    private JComboBox methodsComboBox;
+
+    //url text.
+    private JTextField urlText;
+
+    //send button.
+    private JButton sendBtn;
+
+    //save button.
+    private JButton saveBtn;
+
+    //query panel.
+    private JPanel queryPanel;
+
+    //body panel.
+    private JPanel bodyPanel;
+
+    //left panel.
+    private LeftSidePanel leftSidePanel;
+
+    //counter of header and value.
+    private int headerCounter = 2;
+
+    /**
+     * the constructor makes the center panel with it parts.
+     */
 
     public CenterSidePanel() {
+
+        //add left panel.
         leftSidePanel = new LeftSidePanel();
         setBorder(new LineBorder(Color.BLACK));
         setBackground(Color.DARK_GRAY);
         setLayout(new BorderLayout(0, 0));
 
+        //tabs.
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.setBackground(Color.GRAY);
         add(tabbedPane, BorderLayout.CENTER);
 
+        //add message body.
         bodyPanel = new JPanel();
         bodyPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("      Body      ", bodyPanel);
         tabbedPane.setBackgroundAt(0, Color.GRAY);
         bodyPanel.setLayout(new BorderLayout());
 
+        //body type.
         bodyTypeComboBox = new JComboBox(new String[]{"Form Data", "JSON", "Binary Data"});
         bodyTypeComboBox.addActionListener(new ActionListener() {
             @Override
@@ -72,6 +138,7 @@ public class CenterSidePanel extends JPanel {
 
         bodyPanel.add(bodyTypeComboBox, BorderLayout.NORTH);
 
+        //init tabs.
         initAuthTab();
         initQueryTab();
         initHeaderTab();
@@ -79,6 +146,9 @@ public class CenterSidePanel extends JPanel {
         initDocsTab();
     }
 
+    /**
+     * this initQueryTab method makes the query tab.
+     */
     public void initQueryTab() {
         queryPanel = new JPanel();
         queryPanel.setBackground(Color.DARK_GRAY);
@@ -160,9 +230,13 @@ public class CenterSidePanel extends JPanel {
 
     }
 
+    /**
+     * this initHeaderTab method makes the header tab.
+     */
 
     public void initHeaderTab() {
 
+        //add header panel.
         headerPanel = new JPanel();
         headerPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("    Header    ", headerPanel);
@@ -181,6 +255,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 1;
         headerPanel.add(lineLabel2, gbc);
 
+        //add header text field.
         headerText = new JTextField(15);
         headerText.setBackground(Color.GRAY);
         headerText.setText("Header");
@@ -191,7 +266,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 1;
         headerPanel.add(headerText, gbc);
 
-
+        //add value text field.
         valueText = new JTextField(15);
         valueText.setBackground(Color.GRAY);
         valueText.setText("Value");
@@ -202,6 +277,7 @@ public class CenterSidePanel extends JPanel {
         gbc.gridy = 1;
         headerPanel.add(valueText, gbc);
 
+        //add check box.
         activeHeaderCheckBox2 = new JCheckBox("");
 
         gbc.anchor = GridBagConstraints.WEST;
@@ -211,6 +287,7 @@ public class CenterSidePanel extends JPanel {
 
         headerPanel.add(activeHeaderCheckBox2, gbc);
 
+        //add delete button.
         deleteHeaderBtn2 = new JButton("☓");
 
         gbc.fill = GridBagConstraints.BOTH;
@@ -222,7 +299,12 @@ public class CenterSidePanel extends JPanel {
         headerText.addMouseListener(new MouseActionHeader());
     }
 
+    /**
+     * this initUrlPanel method makes the url panel.
+     */
+
     public void initUrlPanel() {
+
         urlPanel = new JPanel();
         urlPanel.setBackground(Color.gray);
         urlPanel.setPreferredSize(new Dimension(10, 51));
@@ -312,12 +394,20 @@ public class CenterSidePanel extends JPanel {
 
     }
 
+    /**
+     * this initAuthTab method makes the auth panel.
+     */
+
     public void initAuthTab() {
         authPanel = new JPanel();
         authPanel.setBackground(Color.DARK_GRAY);
         tabbedPane.addTab("      Auth      ", authPanel);
 
     }
+
+    /**
+     * this initDocsTab method makes the docs panel.
+     */
 
     public void initDocsTab() {
         docsPanel = new JPanel();
@@ -326,17 +416,20 @@ public class CenterSidePanel extends JPanel {
 
     }
 
+    /**
+     * make a mouse listener to add a new key and value for the header panel.
+     */
     private class MouseActionHeader extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-            while (i < 15) {
+            while (headerCounter < 15) {
                 final GridBagConstraints gbc = new GridBagConstraints();
                 final JLabel lineLabel_2 = new JLabel("𝌆");
                 lineLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 21));
                 gbc.anchor = GridBagConstraints.NORTHWEST;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 1;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 headerPanel.add(lineLabel_2, gbc);
 
                 final JTextField headerText_2 = new JTextField(10);
@@ -345,7 +438,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 2;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 headerPanel.add(headerText_2, gbc);
 
                 final JTextField valueText_2 = new JTextField(10);
@@ -355,7 +448,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 3;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 headerPanel.add(valueText_2, gbc);
 
                 final JCheckBox activeHeaderCheckBox_2 = new JCheckBox("");
@@ -363,7 +456,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.anchor = GridBagConstraints.WEST;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 4;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 headerPanel.add(activeHeaderCheckBox_2, gbc);
 
                 final JButton deleteHeaderBtn_2 = new JButton("☓");
@@ -387,7 +480,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 5;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 headerPanel.add(deleteHeaderBtn_2, gbc);
                 headerText_2.addMouseListener(new MouseAdapter() {
                     @Override
@@ -395,29 +488,31 @@ public class CenterSidePanel extends JPanel {
                         super.mouseClicked(e);
                         revalidate();
                         repaint();
-
-                        //k++;
                     }
                 });
 
-                i++;
+                headerCounter++;
                 break;
             }
         }
 
     }
 
+    /**
+     * make a mouse listener to add a new key and value for the query panel.
+     */
+
     private class MouseActionQuery extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-            while (i < 15) {
+            while (headerCounter < 15) {
                 final GridBagConstraints gbc = new GridBagConstraints();
                 final JLabel lineLabel_2 = new JLabel("𝌆");
                 lineLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 21));
                 gbc.anchor = GridBagConstraints.NORTHWEST;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 1;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 queryPanel.add(lineLabel_2, gbc);
 
                 final JTextField headerText_2 = new JTextField(10);
@@ -426,7 +521,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 2;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 queryPanel.add(headerText_2, gbc);
 
                 final JTextField valueText_2 = new JTextField(10);
@@ -436,7 +531,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 3;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 queryPanel.add(valueText_2, gbc);
 
                 final JCheckBox activeHeaderCheckBox_2 = new JCheckBox("");
@@ -444,7 +539,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.anchor = GridBagConstraints.WEST;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 4;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 queryPanel.add(activeHeaderCheckBox_2, gbc);
 
                 final JButton deleteHeaderBtn_2 = new JButton("☓");
@@ -468,7 +563,7 @@ public class CenterSidePanel extends JPanel {
                 gbc.fill = GridBagConstraints.BOTH;
                 gbc.insets = new Insets(0, 0, 5, 5);
                 gbc.gridx = 5;
-                gbc.gridy = i;
+                gbc.gridy = headerCounter;
                 queryPanel.add(deleteHeaderBtn_2, gbc);
 
                 headerText_2.addMouseListener(new MouseAdapter() {
@@ -479,57 +574,129 @@ public class CenterSidePanel extends JPanel {
                         repaint();
                     }
                 });
-                i++;
+                headerCounter++;
                 break;
             }
         }
 
     }
 
+    /**
+     * get the tabs.
+     *
+     * @return the tabs.
+     */
 
     public JTabbedPane getTabbedPane() {
         return tabbedPane;
     }
 
+    /**
+     * get the auth panel.
+     *
+     * @return auth panel.
+     */
+
     public JPanel getAuthPanel() {
         return authPanel;
     }
+
+    /**
+     * get the header panel.
+     *
+     * @return header panel.
+     */
 
     public JPanel getHeaderPanel() {
         return headerPanel;
     }
 
+    /**
+     * get the docs panel.
+     *
+     * @return docs panel.
+     */
+
     public JPanel getDocsPanel() {
         return docsPanel;
     }
+
+    /**
+     * get the url panel.
+     *
+     * @return url panel.
+     */
+
 
     public JPanel getUrlPanel() {
         return urlPanel;
     }
 
+    /**
+     * get the query panel.
+     *
+     * @return query panel.
+     */
+
     public JPanel getQueryPanel() {
         return queryPanel;
     }
+
+    /**
+     * get the body panel.
+     *
+     * @return body panel.
+     */
 
     public JPanel getBodyPanel() {
         return bodyPanel;
     }
 
+    /**
+     * get the url text field.
+     *
+     * @return url text field.
+     */
+
     public JTextField getUrlPreview() {
         return urlPreview;
     }
+
+    /**
+     * get the name text field.
+     *
+     * @return name text field.
+     */
 
     public JTextField getNameText() {
         return nameText;
     }
 
+    /**
+     * get the value text field.
+     *
+     * @return value text field.
+     */
+
     public JTextField getNewValueText() {
         return newValueText;
     }
 
+    /**
+     * get the header text field.
+     *
+     * @return header text field.
+     */
+
     public JTextField getHeaderText() {
         return headerText;
     }
+
+    /**
+     * get the value text field.
+     *
+     * @return value text field.
+     */
 
     public JTextField getValueText() {
         return valueText;
